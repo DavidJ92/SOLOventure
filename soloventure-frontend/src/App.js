@@ -1,13 +1,18 @@
 import React from 'react';
-import Header from './Header';
-import FeaturedDestinations from './FeaturedDestinations';
-import './Landing.css'; // Import CSS file
+import Landing from './Landing'; // Import the Landing component
+import './Landing.css'; // Import CSS file for global styles
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <FeaturedDestinations />
+      {/* Render the Header component */}
+     
+      
+      {/* Render the Landing component */}
+      <Landing />
+      
+      {/* Render the FeaturedDestinations component */}
+    
     </div>
   );
 }

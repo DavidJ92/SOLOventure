@@ -9,9 +9,6 @@ const FeaturedDestinations = () => {
         <div className="destination-card">Destination 1</div>
         <div className="destination-card">Destination 2</div>
         <div className="destination-card">Destination 3</div>
-        <div className="destination-card">Destination 4</div>
-        <div className="destination-card">Destination 5</div>
-        <div className="destination-card">Destination 6</div>
       </div>
     </section>
   );

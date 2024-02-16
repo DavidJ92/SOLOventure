@@ -2,10 +2,10 @@
 :root {
   /* Color variables */
   --primary-color: #001A64;        /* Blue Dawn */
-  --accent-color: #F13E51;         /* Pink Hibiscus */
-  --neutral-color: #FDCDB6;        /* Light Apricot */
-  --button-color: #E08C9C;         /* Pink Cupcake */
-  --text-color: #80558A;           /* Purple Hyacinth */
+  --accent-color:  #80558A;       /* Pink Hibiscus */
+  --neutral-color: #F13E51; /* Light Apricot */
+  --button-color: #F13E51;          /* Pink Cupcake */
+  --text-color:  #001A64;          /* Purple Hyacinth */
 
   /* Font size variables */
   --base-font-size: 16px;
@@ -19,27 +19,69 @@
 /* Apply global styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: var(--primary-color);
   color: var(--text-color);
+  margin: 0;
+  padding: 0;
 }
 
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--padding-medium); /* Use variable for padding */
-  background-color: var(--accent-color); /* Use variable for color */
+.landing {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.header-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding-medium) 0;
+  background-color: var(--accent-color);
+}
+
+.header-content h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem; /* Add margin bottom to create space between h1 and p */
+}
+
+.header-content p {
+  margin-top: 0.5rem; /* Add margin top to create space between h1 and p */
+  font-size: 1.3rem;
+}
+
 
 input[type="text"] {
   width: 200px;
-  padding: var(--padding-small); /* Use variable for padding */
-  margin-right: var(--padding-medium); /* Use variable for margin */
+  padding: var(--padding-small);
+  margin-right: var(--padding-medium);
 }
-
+.header-content button {
+  padding: var(--padding-small) var(--padding-medium);
+  background-color: var(--button-color);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+   
+}
 button {
-  padding: var(--padding-small) var(--padding-medium); /* Use variables for padding */
-  background-color: var(--button-color); /* Use variable for color */
+  padding: var(--padding-small) var(--padding-medium);
+  background-color: var(--button-color);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -47,11 +89,19 @@ button {
 }
 
 .featured-destinations {
-  padding: var(--padding-medium); /* Use variable for padding */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--padding-medium);
+font-size: 2rem;
 }
 
 .destination-card {
-  background-color: var(--neutral-color); /* Use variable for color */
-  padding: var(--padding-medium); /* Use variable for padding */
+  background-color: var(--neutral-color);
+  padding: var(--padding-medium);
   border-radius: 4px;
 }
