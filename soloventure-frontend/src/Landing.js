@@ -23,7 +23,10 @@ function Landing() {
       
       {/* Header content */}
       <div className="header-content">
-        <h1>Welcome to SoloVenture</h1>
+        <div className="header-content-left">
+          <img src="/img/photo-output.PNG" alt="SoloVenture logo" />
+          <h1>Welcome to SoloVenture</h1>
+        </div>
         <p>Explore the world and plan your solo adventures.</p>
         <div className="button-container">
           <button onClick={handleLogin}>Login</button> 
