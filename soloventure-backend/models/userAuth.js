@@ -1,21 +1,9 @@
+// Import necessary modules
 const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-// Construct a schema using GraphQL schema language
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// The root provides a resolver function for each API endpoint
-const root = {
-  hello: () => 'Hello world!',
-};
-
+// Create Express app
 const app = express();
 
 // Configure bodyParser middleware to parse JSON
@@ -41,7 +29,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Route for user signup
-app.post('/api/signup', async (req, res) => {
+app.post('/signup', async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = new User({ username, password });
@@ -54,7 +42,7 @@ app.post('/api/signup', async (req, res) => {
 });
 
 // Route for user login
-app.post('/api/login', async (req, res) => {
+app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username, password });
@@ -69,14 +57,8 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// Mount GraphQL endpoint
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true, // Enable GraphiQL for testing
-}));
-
-const port = process.env.PORT || 4000;
+// Start the server
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });

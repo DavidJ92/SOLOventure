@@ -1,7 +1,18 @@
 import React from 'react';
 import FeaturedDestinations from './FeaturedDestinations'; // Import the FeaturedDestinations component
 import './Landing.css';
+
 function Landing() {
+  const handleLogin = () => {
+    // Implement login logic here
+    console.log('Login button clicked');
+  };
+
+  const handleSignup = () => {
+    // Implement signup logic here
+    console.log('Signup button clicked');
+  };
+
   return (
     <div className="landing">
       {/* Background video */}
@@ -14,9 +25,10 @@ function Landing() {
       <div className="header-content">
         <h1>Welcome to SoloVenture</h1>
         <p>Explore the world and plan your solo adventures.</p>
-        <button>Login</button> 
-        <button>Signup</button>
-        
+        <div className="button-container">
+          <button onClick={handleLogin}>Login</button> 
+          <button onClick={handleSignup}>Signup</button>
+        </div>
       </div>
 
       {/* Featured destinations */}
