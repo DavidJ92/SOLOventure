@@ -3,6 +3,7 @@ const { graphqlHTTP } = require('express-graphql');
 const { buildSchema } = require('graphql');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const authRoutes = require('./authRoutes'); // Import the authRoutes file
 
 // Construct a schema using GraphQL schema language
 const schema = buildSchema(`
@@ -40,34 +41,8 @@ const userSchema = new mongoose.Schema({
 // Create User model
 const User = mongoose.model('User', userSchema);
 
-// Route for user signup
-app.post('/api/signup', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = new User({ username, password });
-    await user.save();
-    res.status(201).send("User created successfully");
-  } catch (err) {
-    console.error("Error signing up:", err);
-    res.status(500).send("Error signing up");
-  }
-});
-
-// Route for user login
-app.post('/api/login', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username, password });
-    if (user) {
-      res.status(200).send("Login successful");
-    } else {
-      res.status(401).send("Invalid credentials");
-    }
-  } catch (err) {
-    console.error("Error logging in:", err);
-    res.status(500).send("Error logging in");
-  }
-});
+// Mount the authentication routes
+app.use('/api', authRoutes);
 
 // Mount GraphQL endpoint
 app.use('/graphql', graphqlHTTP({
