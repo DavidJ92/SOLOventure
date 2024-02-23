@@ -37,7 +37,7 @@ const Home = () => {
                         </ul>
                     </div>
                     <div className="contact-us">
-                        <a href="contact-us">Contact Us</a>
+                        <a href="#contact-us">Contact Us</a>
                     </div>
                     <div className="copyright">
                         <p>© 2024 SoloVenture</p>
