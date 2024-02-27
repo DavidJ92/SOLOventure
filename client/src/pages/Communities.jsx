@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Community = () => {
-    const [posts, setPosts] = React.useState([]);
-    const [newPost, setNewPost] = React.useState('');
+    const [posts, setPosts] = useState([]);
+    const [newPost, setNewPost] = useState('');
 
     useEffect(() => {
+        const fetchPosts = async () => {
+            try {
+                const response = await axios.get('/api/posts');
+                setPosts(response.data);
+            } catch (error) {
+                console.error('Error fetching posts', error);
+            }
+        };
         fetchPosts();
     }, []);
-
-    const fetchPosts = async () => {
-        try {
-            const response = await axios.get('/api/posts');
-            setPosts(response.data);
-        } catch (error) {
-            console.error('Error fetching posts', error);
-        }
-    };
 
     const handlePostSubmit = async () => {
         try {
@@ -47,7 +46,7 @@ const Community = () => {
                 ))}
             </div>
         </div>
-    );    
+    );
 };
 
 export default Community;
