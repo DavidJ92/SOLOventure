@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './Landing';
+import App from './pages/Landing';
 import reportWebVitals from './reportWebVitals';
-import Landing from './Landing';
+import Landing from './pages/Landing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

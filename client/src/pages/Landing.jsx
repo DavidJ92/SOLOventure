@@ -1,5 +1,5 @@
 import React from 'react';
-import FeaturedDestinations from './FeaturedDestinations'; // Import the FeaturedDestinations component
+import FeaturedDestinations from '../components/FeaturedDestinations'; // Import the FeaturedDestinations component
 import './Landing.css';
 
 function Landing() {
