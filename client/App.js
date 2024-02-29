@@ -2,15 +2,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
-import Diary from './pages/Diary';
+import Journal from './pages/Journal';
+import Communities from './pages/Communities';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+
 
 function App() {
   return (
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route path="/communities" component={Communities} />
         <Route path="/journal" component={Journal} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />

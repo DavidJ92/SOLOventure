@@ -1,6 +1,7 @@
 import React from 'react';
-import FeaturedDestinations from '../components/FeaturedDestinations'; // Import the FeaturedDestinations component
+import FeaturedDestinations from '../components/FeaturedDestinations';
 import '../style/Landing.css';
+import NavBar from '../components/NavBar';
 
 function Landing() {
   const handleLogin = () => {
@@ -29,7 +30,6 @@ function Landing() {
         <p>Explore the world.</p>
         <div className="button-container">
           <button onClick={handleLogin}>Login</button> 
-      
           <button onClick={handleSignup}>Signup</button>
         </div>
       </div>
