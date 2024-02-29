@@ -7,7 +7,7 @@ const authRoutes = require('./server/Routes/authRoutes');
 const app = express();
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/SOLOventuredb', {
+mongoose.connect('mongodb://localhost:27017/myapp', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
@@ -44,15 +44,16 @@ const server = new ApolloServer({
   playground: true,
 });
 
-// Start the Apollo Server and then apply middleware
-async function startApolloServer() {
+async function startServer() {
   await server.start();
   server.applyMiddleware({ app });
 }
 
-startApolloServer();
-
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+startServer().then(() => {
+  const port = process.env.PORT || 4000;
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}).catch(err => {
+  console.error("Error starting server:", err);
 });
