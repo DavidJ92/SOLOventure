@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 const Community = () => {
     const [posts, setPosts] = useState([]);
     const [newPost, setNewPost] = useState('');
+    const [comment, setComment] = useState('');
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -32,10 +33,40 @@ const Community = () => {
             if (!response.ok) {
                 throw new Error('Failed to submit post');
             }
-            setPosts([...posts, { content: newPost }]);
+            const postData = await response.json();
+            setPosts([...posts, postData]);
             setNewPost('');
         } catch (error) {
             console.error('Error submitting post', error);
+        }
+    };
+
+    const handleCommentSubmit = async (postId) => {
+        try {
+            const response = await fetch(`/api/posts/${postId}/comments`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: comment })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to submit comment');
+            }
+            const newCommentData = await response.json();
+            const updatedPosts = posts.map((post) => {
+                if (post.id === postId) {
+                    return {
+                        ...post,
+                        comments: [...post.comments, newCommentData]
+                    };
+                }
+                return post;
+            });
+            setPosts(updatedPosts);
+            setComment('');
+        } catch (error) {
+            console.error('Error submitting comment', error);
         }
     };
 
@@ -54,6 +85,19 @@ const Community = () => {
                 {posts.map((post, index) => (
                     <div key={index}>
                         <p>{post.content}</p>
+                        <div>
+                            <textarea
+                                value={comment}
+                                onChange={(event) => setComment(event.target.value)}
+                                placeholder="Add a comment"
+                            />
+                            <button onClick={() => handleCommentSubmit(post.id)}>Comment</button>
+                        </div>
+                        <div>
+                            {post.comments && post.comments.map((comment, index) => (
+                                <p key={index}>{comment.content}</p>
+                            ))}
+                        </div>
                     </div>
                 ))}
             </div>
