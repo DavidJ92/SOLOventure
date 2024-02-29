@@ -2,6 +2,16 @@ import axios from axios;
 
 const API_URL = 'http://localhost:4000/graphql'; // Replace with your API
 
+const saveEntriesToLocalStorage = (entries) => {
+    localStorage.setItem('journalEntries', JSON.stringify(entries));
+
+};
+
+const getEntriesFromLocalStorage = () => {
+    const storedEntries = localStorage.getItem('journalEntries');
+    return storedEntries ? JSON.parse(storedEntries) : [];
+};
+
 const saveTokenToLocalStorage = (token) => {
     localStorage.setItem('accessToken', token);
 };
@@ -47,4 +57,4 @@ const makePost = async (postData) => {
     }
 };
 
-export { isAuthenticated, login, logout, makePost };
+export { isAuthenticated, login, logout, makePost, saveEntriesToLocalStorage, getEntriesFromLocalStorage };
