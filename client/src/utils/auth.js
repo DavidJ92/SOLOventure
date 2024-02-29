@@ -54,4 +54,5 @@ const Auth = {
     }
 };
 
-export default Auth;
+export const { login, register } = Auth;
+
