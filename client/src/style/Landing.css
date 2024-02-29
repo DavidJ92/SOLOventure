@@ -143,3 +143,23 @@ input[type="text"],
     font-size: 1.2rem;
   }
 }
+
+.footer-button {
+  color: #2B4257;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.footer .footer-button button:hover {
+  background-color: #001A64; /* Adjust hover color */
+}
+

@@ -39,24 +39,6 @@ function NavBar() {
 
   return (
     <nav>
-      <form className="auth-form">
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-      </form>
       <div className='buttonContainer'>
         <button onClick={handleGoToJournal}>Go to Journal</button>
         <button onClick={handleGoToCommunities}>Go to Communities</button>
