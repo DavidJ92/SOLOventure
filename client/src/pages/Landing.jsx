@@ -1,30 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import FeaturedDestinations from '../components/FeaturedDestinations';
-import '../style/Landing.css';
-import { useState } from 'react';
 import { login, register } from '../utils/auth';
-import NavBar from '../components/NavBar';
 
+function Journal() {
+  return <h2>Journal Page</h2>;
+}
 
+function Communities() {
+  return <h2>Communities Page</h2>;
+}
 
 function Landing() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const userData = { username, password };
+      const result = await login(userData);
+      console.log('Login result', result);
+    } catch (error) {
+      console.error('Error logging in', error);
+    }
+  };
+
+  const handleSignup = async () => {
+    try {
+      const userData = { username, password };
+      const result = await register(userData);
+      console.log('Signup result', result);
+    } catch (error) {
+      console.error('Error signing up', error);
+    }
+  };
+
   return (
-    <div className="landing">
-      
-      {/* Header content */}
-      <div className="header-content">
-        <div className="header-content-left">
-          <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
+    <BrowserRouter>
+      <div className="landing">
+        {/* Header content */}
+        <div className="header-content">
+          <div className="header-content-left">
+            <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
+          </div>
+          <p>Explore the world.</p>
+          <div>
+            <nav>
+              <div className='buttonContainer'>
+                <Link to="/Journal">Go to Journal</Link>
+                <Link to="/Communities">Go to Communities</Link>
+                <button onClick={handleSignup}>Signup</button>
+              </div>
+            </nav>
+          </div>
         </div>
-        <p>Explore the world.</p>
-        <div>
-          <NavBar />
-        </div>
+        {/* Featured destinations */}
+        <Routes>
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/communities" element={<Communities />} />
+          <Route path="/" element={<FeaturedDestinations />} />
+        </Routes>
+        <br />
+        {/* Footer */}
+        <footer className="footer">
+          <div className="footer-content">
+            <form className="auth-form">
+              <label>
+                Username:
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </label>
+              <label>
+                Password:
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </label>
+              <div className='footer-button'>
+                <button onClick={handleLogin}>Login</button>
+              </div>
+            </form>
+          </div>
+        </footer>
       </div>
-      {/* Featured destinations */}
-      <FeaturedDestinations /> {/* Render the FeaturedDestinations component */}
-    </div>
+    </BrowserRouter>
   );
-};
+}
 
 export default Landing;
