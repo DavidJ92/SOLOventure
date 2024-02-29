@@ -69,6 +69,13 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.buttonContainer link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
 
 /* Make input and button responsive */
 input[type="text"],
@@ -163,3 +170,7 @@ input[type="text"],
   background-color: #001A64; /* Adjust hover color */
 }
 
+.linkButton {
+  text-decoration: none;
+  color: white;
+}
