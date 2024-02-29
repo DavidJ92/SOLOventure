@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './pages/Landing';
+import './style/Communities.css';
+import './style/Homepage.css';
+import './style/Journal.css';
+import './style/Landing.css';
 import reportWebVitals from './reportWebVitals';
 import Landing from './pages/Landing';
 
