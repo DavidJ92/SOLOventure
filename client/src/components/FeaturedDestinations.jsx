@@ -71,7 +71,6 @@ const FeaturedDestinations = () => {
 
   return (
     <section className="featured-destinations">
-      <h2>Featured Destinations</h2>
       <div className="destination-grid">
         {displayedDestinations.slice(0, 4).map((destination, index) => (
           <div key={index} className="destination-card">
