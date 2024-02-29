@@ -1,11 +1,11 @@
 /* Global styles using :root */
 :root {
   /* Color variables */
-  --primary-color: #001A64;        /* Blue Dawn */
-  --accent-color:  #80558A;       /* Pink Hibiscus */
-  --neutral-color: #F13E51; /* Light Apricot */
-  --button-color: #F13E51;          /* Pink Cupcake */
-  --text-color:  #001A64;          /* Purple Hyacinth */
+  --primary-color: #001A64;        
+  --accent-color:  #F4F6FC;       
+  --neutral-color: #DDE7E8; 
+  --button-color: #2B4257;          
+  --text-color:  #2B4257;     
 
   /* Font size variables */
   --base-font-size: 16px;
@@ -50,43 +50,34 @@ body {
   flex-direction: column; /* Stack items vertically */
   align-items: center;
   justify-content: center;
-  padding: var(--padding-medium) 0;
   background-color: var(--accent-color);
 }
 
-.header-content-left {
-  display: flex;
-  align-items: center;
-}
-
 .header-content img {
-  width: 50px; /* Adjust width as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px; /* Adjust width as needed */
   height: auto; /* Maintain aspect ratio */
-  margin-right: 1rem; /* Add margin to the right to create space between the logo and heading */
-}
-
-.header-content h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem; /* Add margin bottom to create space between h1 and p */
 }
 
 .header-content p {
   margin-top: 0.5rem; /* Add margin top to create space between h1 and p */
   font-size: 1.3rem;
   background-color: var(--accent-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 
 /* Make input and button responsive */
 input[type="text"],
 .header-content button {
-  padding: var(--padding-small) var(--padding-medium);
   background-color: var(--button-color);
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 2px;
+  margin: 10px;
 }
 
 /* Featured destinations styles */
@@ -95,7 +86,6 @@ input[type="text"],
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start; /* Align items to the start */
-  padding: var(--padding-medium);
   font-size: 1rem;
   max-width: 100%; /* Ensure it doesn't exceed the width of the screen */
   text-align: center; /* Center the text */
@@ -105,21 +95,20 @@ input[type="text"],
   width: 100%; /* Make the h2 element take up the full width */
   margin-bottom: 1rem;
   font-size: 2rem;
-  background-color: var(--neutral-color);
 }
 .featured-destinations h3,p {
-  margin: 0;
+  margin: 0px;
   background-color: var(--neutral-color);
 }
-
-
 .destination-card {
   padding: var(--padding-medium);
   border-radius: 6px;
   border-style: solid;
-  margin: 0 1rem 1rem 0;
+  margin: 1rem 1rem 1rem 0;
   max-width: 300px;
   flex: 1;
+  background-color: var(--neutral-color);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 

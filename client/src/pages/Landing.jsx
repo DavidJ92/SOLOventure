@@ -1,6 +1,6 @@
 import React from 'react';
 import FeaturedDestinations from '../components/FeaturedDestinations'; // Import the FeaturedDestinations component
-import './Landing.css';
+import '../style/Landing.css';
 
 function Landing() {
   const handleLogin = () => {
@@ -24,12 +24,12 @@ function Landing() {
       {/* Header content */}
       <div className="header-content">
         <div className="header-content-left">
-          <img src="/img/photo-output.PNG" alt="SoloVenture logo" />
-          <h1>Welcome to SoloVenture</h1>
+          <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
         </div>
-        <p>Explore the world and plan your solo adventures.</p>
+        <p>Explore the world.</p>
         <div className="button-container">
           <button onClick={handleLogin}>Login</button> 
+      
           <button onClick={handleSignup}>Signup</button>
         </div>
       </div>
