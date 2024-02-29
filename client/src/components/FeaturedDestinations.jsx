@@ -70,17 +70,20 @@ const FeaturedDestinations = () => {
   }, [destinations]);
 
   return (
+    <div className='box-wrapper'>
     <section className="featured-destinations">
+      <h2>Featured Destinations</h2>
       <div className="destination-grid">
         {displayedDestinations.slice(0, 4).map((destination, index) => (
           <div key={index} className="destination-card">
             <img src={destination.image} alt={destination.name} />
             <h3>{destination.name}</h3>
             <p>Popularity: {destination.popularity}</p>
-          </div>
+            </div>
         ))}
       </div>
     </section>
+    </div>
   );
 };
 
