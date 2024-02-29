@@ -2,14 +2,16 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import FeaturedDestinations from '../components/FeaturedDestinations';
 import { login, register } from '../utils/auth';
+import Journal from './Journal';
+import Communities from './Communities';
 
-function Journal() {
-  return <h2>Journal Page</h2>;
-}
+// function Journal() {
+//   return <h2>Journal Page</h2>;
+// }
 
-function Communities() {
-  return <h2>Communities Page</h2>;
-}
+// function Communities() {
+//   return <h2>Communities Page</h2>;
+// }
 
 function Landing() {
   const [username, setUsername] = useState('');
@@ -47,17 +49,17 @@ function Landing() {
           <div>
             <nav>
               <div className='buttonContainer'>
-                <Link to="/Journal">Go to Journal</Link>
-                <Link to="/Communities">Go to Communities</Link>
+                <button> <Link className="linkButton" to="/Journal">Go to Journal</Link> </button>
+                <button> <Link className="linkButton" to="/Communities">Go to Communities</Link> </button>
                 <button onClick={handleSignup}>Signup</button>
               </div>
             </nav>
           </div>
         </div>
-        {/* Featured destinations */}
+        {/* Main content */}
         <Routes>
-          <Route path="/journal" element={<Journal />} />
-          <Route path="/communities" element={<Communities />} />
+          <Route path="/Journal" element={<Journal />} />
+          <Route path="/Communities" element={<Communities />} />
           <Route path="/" element={<FeaturedDestinations />} />
         </Routes>
         <br />
