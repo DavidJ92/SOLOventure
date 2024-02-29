@@ -1,7 +1,5 @@
 import React from 'react';
 import { createBrowserHistory } from 'history';
-import Journal from '../pages/Journal';
-import Communities from '../pages/Communities';
 import { login, register } from '../utils/auth';
 import { useState } from 'react';
 
