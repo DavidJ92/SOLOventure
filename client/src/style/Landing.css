@@ -22,6 +22,7 @@ body {
   color: var(--text-color);
   margin: 0;
   padding: 0;
+  background-color: var(--neutral-color);
 }
 
 .landing {
@@ -98,7 +99,6 @@ input[type="text"],
 }
 .featured-destinations h3,p {
   margin: 0px;
-  background-color: var(--neutral-color);
 }
 .destination-card {
   padding: var(--padding-medium);
@@ -107,10 +107,23 @@ input[type="text"],
   margin: 1rem 1rem 1rem 0;
   max-width: 300px;
   flex: 1;
-  background-color: var(--neutral-color);
+  background-color: var(--accent-color);
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
+.box-wrapper {
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding-left: 15px;
+  width: 1000px;
+  background-color: var(--accent-color);
+  border-radius: 25px;
+  border: 2px solid var(--button-color);
+}
 
 .destination-card img {
   max-width: 100%;
