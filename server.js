@@ -1,28 +1,12 @@
 const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema } = require('graphql');
+const { ApolloServer, gql } = require('apollo-server-express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const authRoutes = require('./authRoutes'); // Import the authRoutes file
-
-// Construct a schema using GraphQL schema language
-const schema = buildSchema(`
-  type Query {
-    hello: String
-  }
-`);
-
-// The root provides a resolver function for each API endpoint
-const root = {
-  hello: () => 'Hello world!',
-};
+const authRoutes = require('./server/Routes/authRoutes');
 
 const app = express();
-
-// Configure bodyParser middleware to parse JSON
 app.use(bodyParser.json());
 
-// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/myapp', {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -32,26 +16,44 @@ mongoose.connect('mongodb://localhost:27017/myapp', {
   console.error("Error connecting to MongoDB:", err);
 });
 
-// Define user schema
 const userSchema = new mongoose.Schema({
   username: String,
   password: String
 });
 
-// Create User model
 const User = mongoose.model('User', userSchema);
 
-// Mount the authentication routes
 app.use('/api', authRoutes);
 
-// Mount GraphQL endpoint
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true, // Enable GraphiQL for testing
-}));
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
 
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!',
+  },
+};
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: true,
+  playground: true,
+});
+
+async function startServer() {
+  await server.start();
+  server.applyMiddleware({ app });
+}
+
+startServer().then(() => {
+  const port = process.env.PORT || 4000;
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}).catch(err => {
+  console.error("Error starting server:", err);
 });
