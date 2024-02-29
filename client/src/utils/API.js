@@ -1,12 +1,13 @@
-import axios from "axios";
-
 const API_URL = 'http://localhost:4000/graphql'; // Replace with your API
 
 class API {
     static async fetchData(endpoint) {
         try {
-            const response = await axios.get(`${API_URL}/${endpoint}`);
-            return response.data;
+            const response = await fetch(`${API_URL}/${endpoint}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            return await response.json();
         } catch (error) {
             console.error('Error fetching data', error);
             throw error;
@@ -14,8 +15,17 @@ class API {
     }
     static async postData(endpoint, data) {
         try {
-            const response = await axios.post(`${API_URL}/${endpoint}`, data);
-            return response.data;
+            const response = await fetch(`${API_URL}/${endpoint}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) {
+                throw new Error('Failed to post data');
+            }
+            return await response.json();
         } catch (error) {
             console.error('Error posting data', error);
             throw error;

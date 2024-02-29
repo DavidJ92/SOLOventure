@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 
 const Community = () => {
     const [posts, setPosts] = useState([]);
@@ -8,8 +7,12 @@ const Community = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await axios.get('/api/posts');
-                setPosts(response.data);
+                const response = await fetch('/api/posts');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch posts');
+                }
+                const data = await response.json();
+                setPosts(data);
             } catch (error) {
                 console.error('Error fetching posts', error);
             }
@@ -19,7 +22,16 @@ const Community = () => {
 
     const handlePostSubmit = async () => {
         try {
-            await axios.post('/api/posts', { content: newPost });
+            const response = await fetch('/api/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ content: newPost })
+            });
+            if (!response.ok) {
+                throw new Error('Failed to submit post');
+            }
             setPosts([...posts, { content: newPost }]);
             setNewPost('');
         } catch (error) {

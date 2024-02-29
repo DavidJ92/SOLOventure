@@ -1,10 +1,7 @@
-import axios from axios;
-
 const API_URL = 'http://localhost:4000/graphql'; // Replace with your API
 
 const saveEntriesToLocalStorage = (entries) => {
     localStorage.setItem('journalEntries', JSON.stringify(entries));
-
 };
 
 const getEntriesFromLocalStorage = () => {
@@ -26,10 +23,19 @@ const isAuthenticated = () => {
 
 const login = async (userData) => {
     try {
-        const response = await axios.post(`${API_URL}/login`, userData);
-        const { token } = response.data;
+        const response = await fetch(`${API_URL}/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+        if (!response.ok) {
+            throw new Error('Failed to log in');
+        }
+        const { token } = await response.json();
         saveTokenToLocalStorage(token);
-        return response.data;
+        return { success: true, token };
     } catch (error) {
         console.error('Error logging in user', error);
         throw error;
@@ -44,13 +50,18 @@ const logout = () => {
 const makePost = async (postData) => {
     try {
         const token = localStorage.getItem('accessToken');
-        const config = {
+        const response = await fetch(`${API_URL}/posts`, {
+            method: 'POST',
             headers: {
-                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-        };
-        const response = await axios.post(`${API_URL}/posts`, postData, config);
-        return response.data;
+            body: JSON.stringify(postData)
+        });
+        if (!response.ok) {
+            throw new Error('Failed to make post');
+        }
+        return await response.json();
     } catch (error) {
         console.error('Error posting data', error);
         throw error;
