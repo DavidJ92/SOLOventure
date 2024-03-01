@@ -5,13 +5,6 @@ import { login, register } from '../utils/auth';
 import Journal from './Journal';
 import Communities from './Communities';
 
-// function Journal() {
-//   return <h2>Journal Page</h2>;
-// }
-
-// function Communities() {
-//   return <h2>Communities Page</h2>;
-// }
 
 function Landing() {
   const [username, setUsername] = useState('');
@@ -42,9 +35,11 @@ function Landing() {
       <div className="landing">
         {/* Header content */}
         <div className="header-content">
-          <div className="header-content-left">
-            <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
-          </div>
+        <div className="header-content-left">
+          <a href="/FeaturedDestinations">
+          <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
+          </a>
+        </div>
           <p>Explore the world.</p>
           <div>
             <nav>

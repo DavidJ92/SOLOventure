@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FeaturedDestinations from '../components/FeaturedDestinations';
 
 const Journal = () => {
     const [entries, setEntries] = useState([]);
