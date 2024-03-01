@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+const signupRouter = require('./server/routes/signup');
+app.use('/api', signupRouter);
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
