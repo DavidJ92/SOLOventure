@@ -36,7 +36,7 @@ function Landing() {
         {/* Header content */}
         <div className="header-content">
         <div className="header-content-left">
-          <a href="/FeaturedDestinations">
+          <a href="/Homepage">
           <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
           </a>
         </div>
