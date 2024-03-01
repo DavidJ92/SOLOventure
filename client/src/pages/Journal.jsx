@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import FeaturedDestinations from '../components/FeaturedDestinations';
+import { getEntriesFromLocalStorage, saveEntriesToLocalStorage } from '../utils/localStorage';
+import { set } from 'mongoose';
 
 const Journal = () => {
-    const [entries, setEntries] = useState([]);
+    const [entries, setEntries] = useState(getEntriesFromLocalStorage());
     const [currentEntry, setCurrentEntry] = useState('');
 
     const saveCurrentEntry = () => {
-        setEntries([...entries, currentEntry]);
+        const updatedEntries = [...entries, currentEntry];
+        setEntries(updatedEntries);
+        saveEntriesToLocalStorage(updatedEntries);
         setCurrentEntry('');
     };
 
