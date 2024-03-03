@@ -1,0 +1,14 @@
+services:
+  - name: web
+    buildCommand: npm build
+    startCommand: npm start
+    env:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+    healthCheckPath: /health
+    github:
+      branch: main
+      prebuild:
+        - npm install
