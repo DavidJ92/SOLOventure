@@ -7,7 +7,7 @@ A tool to help solo travelers to experience traveling to another level.
 - [Features](#features)
 - [Usage](#usage)
 - [Technologies](#technologies)
-- [Contribution](#contribution)
+- [Contributors](#contributors)
 
 ## Introduction
 SOLOventure is a web application designed for solo travelers who want to enhance their journey by sharing experiences, getting advice from experienced travelers.
@@ -29,6 +29,7 @@ SOLOventure is a web application designed for solo travelers who want to enhance
 - GraphQL 
 - Mongoose 
 
-## Contribution
-
-
+## Contributors 
+https://github.com/DavidJ92
+https://github.com/zamatheson
+https://github.com/Xue-F-Yang
