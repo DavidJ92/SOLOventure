@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:4000/graphql'; // Replace with your API 
+const API_URL = 'http://localhost:3001/graphql'; // Replace with your API 
 
 const Auth = {
     register: async (userData) => {

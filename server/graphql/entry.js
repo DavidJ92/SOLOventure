@@ -3,7 +3,7 @@ const { ApolloServer } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./graphql/schema');
 
 const app = express();
-const PORT = 4000;
+const PORT = 3001;
 
 const entries = [];
 
