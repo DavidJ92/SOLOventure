@@ -30,6 +30,6 @@ SOLOventure is a web application designed for solo travelers who want to enhance
 - Mongoose 
 
 ## Contributors 
-https://github.com/DavidJ92
-https://github.com/zamatheson
-https://github.com/Xue-F-Yang
+- https://github.com/DavidJ92
+- https://github.com/zamatheson
+- https://github.com/Xue-F-Yang
