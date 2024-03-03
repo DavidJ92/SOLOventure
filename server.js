@@ -5,11 +5,10 @@ const mongoose = require('mongoose');
 const authRoutes = require('./server/Routes/authRoutes');
 
 const app = express();
-app.use(bodyParser.json());
+app.use(bodyParser.json()); // use the bodyParser middleware
 
 mongoose.connect('mongodb://localhost:27017/myapp', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+  serverSelectionTimeoutMS: 5000, // set a timeout of 5 seconds
 }).then(() => {
   console.log("Connected to MongoDB");
 }).catch(err => {
@@ -54,6 +53,4 @@ startServer().then(() => {
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
-}).catch(err => {
-  console.error("Error starting server:", err);
-});
+}).catch
