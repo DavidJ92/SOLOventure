@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
   password: String
 });
 
-const User = mongoose.model('User', userSchema);
+const user = mongoose.model('user', userSchema);
 
 app.use('/api', authRoutes);
 
