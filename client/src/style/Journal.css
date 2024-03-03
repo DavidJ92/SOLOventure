@@ -38,3 +38,12 @@ ul {
 ul li {
     margin-bottom: 5px;
 }
+
+.pastEntries {
+    border-radius: 15px;
+    height: 100px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #F4F6FC;
+    border: 1px solid #2B4257;
+}

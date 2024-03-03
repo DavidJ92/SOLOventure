@@ -36,7 +36,7 @@ function Landing() {
         {/* Header content */}
         <div className="header-content">
         <div className="header-content-left">
-          <a href="/Homepage">
+          <a href="/Landing">
           <img className="logo" src="/img/1.png" alt="SoloVenture logo" />
           </a>
         </div>
@@ -82,6 +82,9 @@ function Landing() {
                 <button onClick={handleLogin}>Login</button>
               </div>
             </form>
+            <div className='footer-words'>
+              <p>© SoloVenture 2024</p>
+            </div>
           </div>
         </footer>
       </div>
