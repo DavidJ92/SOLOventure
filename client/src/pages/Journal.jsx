@@ -28,7 +28,7 @@ const Journal = () => {
             <br />
             <button onClick={saveCurrentEntry}>Save Entry</button>
 
-            <div>
+            <div className='pastEntries'>
                 <h2>Past Entries</h2>
                 <ul>
                     {entries.map((entry, index) => (
